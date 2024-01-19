@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const AnecdoteList = ({ anecdotes }) => {
   console.log('Anecdotes received:', anecdotes)
@@ -10,7 +10,9 @@ const AnecdoteList = ({ anecdotes }) => {
       <ul>
         {anecdotes.map((anecdote) => (
           <li key={anecdote.id}>
-            <Link to={`/anecdotes/${anecdote.id}`}>{anecdote.content}</Link>
+            <Link to={`/anecdotes/${anecdote.id}`}>
+              {anecdote.content}
+            </Link>
           </li>
         ))}
       </ul>
