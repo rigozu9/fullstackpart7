@@ -14,6 +14,7 @@ import CreateNew from './components/CreateNew'
 import Notification from './components/Notification'
 
 const App = () => {
+  console.log("app rerenderes");
   const [anecdotes, setAnecdotes] = useState([
     {
       content: 'If it hurts, do it more often',
