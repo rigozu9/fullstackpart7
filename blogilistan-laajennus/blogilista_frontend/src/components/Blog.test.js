@@ -1,19 +1,19 @@
-import React from 'react'
-import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import Blog from './Blog'
+import React from "react"
+import "@testing-library/jest-dom"
+import { render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
+import Blog from "./Blog"
 
-describe('Blog testing', () => {
+describe("Blog testing", () => {
   const blog = {
-    title: 'Test Blog',
-    author: 'Test Man',
-    url: 'www.test.com',
+    title: "Test Blog",
+    author: "Test Man",
+    url: "www.test.com",
     likes: 420,
     user: {
-      username: 'testerman',
-      name: 'Riku',
-    }
+      username: "testerman",
+      name: "Riku",
+    },
   }
 
   let container
@@ -27,11 +27,11 @@ describe('Blog testing', () => {
         blog={blog}
         updateLikes={mockHandlerLikes}
         username={blog.user.username}
-      />
+      />,
     )
   })
 
-  test('title by author renders', async () => {
+  test("title by author renders", async () => {
     const titleAndAuthor = screen.getByText(`${blog.title} by ${blog.author}`)
     const url = screen.getByText(blog.url)
     const likes = await screen.findByText(`Likes: ${blog.likes}`)
@@ -40,9 +40,9 @@ describe('Blog testing', () => {
     expect(url).not.toBeVisible()
     expect(likes).not.toBeVisible()
   })
-  test('upon pressing view more url, likes and username renders', async () => {
+  test("upon pressing view more url, likes and username renders", async () => {
     const user = userEvent.setup()
-    const button = screen.getByText('View More')
+    const button = screen.getByText("View More")
     await user.click(button)
 
     const url = screen.getByText(blog.url)
@@ -54,12 +54,12 @@ describe('Blog testing', () => {
     expect(username).toBeVisible()
   })
   //npm run test -- -t 'upon pressing view more url, likes and username renders'
-  test('upon pressin like button twice, callback function called twice', async () => {
+  test("upon pressin like button twice, callback function called twice", async () => {
     const user = userEvent.setup()
-    const button = screen.getByText('View More')
+    const button = screen.getByText("View More")
     await user.click(button)
 
-    const likeButton = screen.getByText('like')
+    const likeButton = screen.getByText("like")
     await user.click(likeButton)
     await user.click(likeButton)
 

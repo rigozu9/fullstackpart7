@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import Togglable from './Togglable'
+import React, { useState } from "react"
+import Togglable from "./Togglable"
 
-const Blog = ({ blog, updateLikes, removeBlog, username  }) => {
+const Blog = ({ blog, updateLikes, removeBlog, username }) => {
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
-    border: 'solid',
+    border: "solid",
     borderWidth: 1,
-    marginBottom: 5
+    marginBottom: 5,
   }
 
   const handleLike = () => {
@@ -29,17 +29,26 @@ const Blog = ({ blog, updateLikes, removeBlog, username  }) => {
 
   return (
     <div>
-      <div className='blog' style={blogStyle}>
+      <div className="blog" style={blogStyle}>
         <div>
           {blog.title} by {blog.author}
           <Togglable buttonLabel="View More" cancelLabel="Hide">
             <div>
-              <p><a href=''>{blog.url}</a></p>
-              <p>Likes: {blog.likes} <button id="like-button" onClick={handleLike}>like</button></p>
+              <p>
+                <a href="">{blog.url}</a>
+              </p>
+              <p>
+                Likes: {blog.likes}{" "}
+                <button id="like-button" onClick={handleLike}>
+                  like
+                </button>
+              </p>
               <p>Added by: {blog.user.username}</p>
-              {username === blog.user.username && <button onClick={handleDelete}>REMOVE</button>}
+              {username === blog.user.username && (
+                <button onClick={handleDelete}>REMOVE</button>
+              )}
             </div>
-          </Togglable >
+          </Togglable>
         </div>
       </div>
     </div>

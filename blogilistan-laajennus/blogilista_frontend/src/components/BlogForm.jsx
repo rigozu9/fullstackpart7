@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState } from "react"
 
-const BlogForm  = ({ createBlog }) => {
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [url, setUrl] = useState('')
+const BlogForm = ({ createBlog }) => {
+  const [title, setTitle] = useState("")
+  const [author, setAuthor] = useState("")
+  const [url, setUrl] = useState("")
 
   const addBlog = async (event) => {
     event.preventDefault()
@@ -12,13 +12,13 @@ const BlogForm  = ({ createBlog }) => {
       createBlog({
         title,
         author,
-        url
+        url,
       })
-      setTitle('')
-      setAuthor('')
-      setUrl('')
+      setTitle("")
+      setAuthor("")
+      setUrl("")
     } catch (error) {
-      console.error('Error creating blog:', error)
+      console.error("Error creating blog:", error)
     }
   }
 
@@ -27,33 +27,35 @@ const BlogForm  = ({ createBlog }) => {
       <h2>create new</h2>
       <form onSubmit={addBlog}>
         <div>
-      title: {}
+          title: {}
           <input
-            id='title'
+            id="title"
             type="text"
-            placeholder= 'title'
+            placeholder="title"
             value={title}
             name="title"
-            onChange={({ target }) => {setTitle(target.value)}}
+            onChange={({ target }) => {
+              setTitle(target.value)
+            }}
           />
         </div>
         <div>
-      author: {}
+          author: {}
           <input
-            id='author'
+            id="author"
             type="text"
-            placeholder= 'author'
+            placeholder="author"
             value={author}
             name="author"
             onChange={({ target }) => setAuthor(target.value)}
           />
         </div>
         <div>
-      url: {}
+          url: {}
           <input
-            id='url'
+            id="url"
             type="text"
-            placeholder = 'url'
+            placeholder="url"
             value={url}
             name="url"
             onChange={({ target }) => setUrl(target.value)}
