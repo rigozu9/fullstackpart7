@@ -6,13 +6,11 @@ const LoginForm = ({
   password,
   handleUsername,
   handlePassword,
-  message,
-  type,
 }) => {
   return (
     <form onSubmit={handleLogin}>
       <h2>log in to application</h2>
-      <Notification message={message} type={type} />
+      <Notification />
       <div>
         username {}
         <input
