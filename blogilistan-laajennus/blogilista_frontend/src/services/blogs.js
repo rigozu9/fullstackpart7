@@ -1,4 +1,5 @@
 import axios from "axios"
+
 const baseUrl = "/api/blogs"
 
 let token = null
@@ -22,6 +23,7 @@ const create = async (newObject) => {
 }
 
 const like = async (id, updatedObj) => {
+  console.log(updatedObj)
   const response = await axios.put(`${baseUrl}/${id}`, updatedObj)
   return response.data
 }

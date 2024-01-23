@@ -1,7 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import Togglable from "./Togglable"
+import { useDispatch } from "react-redux"
+import { updateBlog, removeBlog } from "../reducers/blogReducer"
 
-const Blog = ({ blog, updateLikes, removeBlog, username }) => {
+const Blog = ({ blog, username }) => {
+  const dispatch = useDispatch()
+
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
@@ -12,18 +16,19 @@ const Blog = ({ blog, updateLikes, removeBlog, username }) => {
 
   const handleLike = () => {
     const blogToUpdate = {
+      id: blog.id,
       title: blog.title,
       author: blog.author,
       url: blog.url,
       likes: blog.likes + 1,
       user: blog.user.id,
     }
-    updateLikes(blog.id, blogToUpdate)
+    dispatch(updateBlog(blogToUpdate))
   }
 
   const handleDelete = () => {
     if (window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
-      removeBlog(blog.id)
+      dispatch(removeBlog(blog.id))
     }
   }
 
