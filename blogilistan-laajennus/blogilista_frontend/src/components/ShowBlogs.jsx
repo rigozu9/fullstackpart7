@@ -1,27 +1,17 @@
-import { useDispatch, useSelector } from "react-redux"
-import { logout } from "../reducers/loginReducer"
+import { useSelector } from "react-redux"
 import Blog from "./Blog"
 import BlogForm from "./BlogForm"
 import Notification from "./Notification"
+import Header from "./Header"
 
 const ShowBlogs = () => {
   const blogs = useSelector(state => [...state.blogs])
   const login = useSelector(state => state.login)
 
-  const dispatch = useDispatch()
-
-  const handleLogOut = () => {
-    dispatch(logout())
-  }
-
   return (
     <div>
-      <h1>blogs</h1>
       <Notification />
-      <p>
-        {login.name} logged in
-        <button onClick={handleLogOut}>logout</button>
-      </p>
+      <Header />
       <BlogForm />
       {blogs
         .sort((a, b) => b.likes - a.likes)
