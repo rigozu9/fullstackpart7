@@ -21,6 +21,7 @@ const App = () => {
   const blogs = useSelector(state => state.blogs)
 
   const dispatch = useDispatch()
+  console.log(blogs)
 
   useEffect(() => {
     dispatch(initializeBlogs())
