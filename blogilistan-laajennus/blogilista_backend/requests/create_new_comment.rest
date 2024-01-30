@@ -1,0 +1,6 @@
+POST  http://localhost:3001/api/blogs/65af7efb96ac962be7bdde03/comments
+Content-Type: application/json
+
+{
+  "comment": "Chelsea winning liverpoool by 3-0"
+}

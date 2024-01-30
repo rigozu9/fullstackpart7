@@ -63,4 +63,17 @@ router.delete("/:id", userExtractor, async (request, response) => {
   response.status(204).end()
 })
 
+router.post("/:id/comments", async (request, response) => {
+  const { comment } = request.body
+  const id = request.params.id
+  const blog = await Blog.findById(id)
+
+  blog.comments = [...blog.comments, comment]
+  const updatedBlog = await blog.save()
+
+  response
+    .status(201)
+    .json(await updatedBlog.populate("user", { username: 1, name: 1 }))
+})
+
 module.exports = router
