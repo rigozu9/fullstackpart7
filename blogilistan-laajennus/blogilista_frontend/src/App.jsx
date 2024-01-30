@@ -40,14 +40,16 @@ const App = () => {
     : null
 
   return (
-    <><NavMenu></NavMenu>
-      <Routes>
-        <Route path='/users/:id' element={<User user={user}/>}/>
-        <Route path='/blogs/:id' element={<BlogInfo blog={blog}/>}/>
-        <Route path='/' element={!login ? <LoginForm /> : <ShowBlogs /> }/>
-        <Route path='/users' element={<Users />}/>
-      </Routes>
-    </>
+    <div className="container">
+      <><NavMenu></NavMenu>
+        <Routes>
+          <Route path='/users/:id' element={<User user={user}/>}/>
+          <Route path='/blogs/:id' element={<BlogInfo blog={blog}/>}/>
+          <Route path='/' element={!login ? <LoginForm /> : <ShowBlogs /> }/>
+          <Route path='/users' element={<Users />}/>
+        </Routes>
+      </>
+    </div>
   )
 }
 

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import Header from "./Header"
+import { Table } from "react-bootstrap"
 
 const User = ({ user }) => {
   if (!user) return null
@@ -10,16 +11,23 @@ const User = ({ user }) => {
   return (
     <div>
       <Header />
-      <h1> {user.name}</h1>
-      <h2>added blogs</h2>
+      <h1>{user.name}</h1>
+      <h2>Added Blogs</h2>
 
-      <ul>
-        {blogs.map(blog => (
-          <li key={blog.id}>
-            {blog.title}
-          </li>
-        ))}
-      </ul>
+      <Table striped>
+        <thead>
+          <tr>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          {blogs.map((blog) => (
+            <tr key={blog.id}>
+              <td>{blog.title}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   )
 }

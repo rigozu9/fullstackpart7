@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import Header from "./Header"
-import NavMenu from "./NavMenu"
+import { Table } from "react-bootstrap"
 
 const Users = () => {
   const users = useSelector(state => state.users)
@@ -10,7 +10,7 @@ const Users = () => {
     <div>
       <Header />
       <h1>Users</h1>
-      <table>
+      <Table striped>
         <thead>
           <tr>
             <th>Name</th>
@@ -25,7 +25,7 @@ const Users = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   )
 }

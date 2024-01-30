@@ -2,6 +2,7 @@ import { useState } from "react"
 import { login } from "../reducers/loginReducer"
 import { useDispatch } from "react-redux"
 import Notification from "./Notification"
+import { Table, Form, Button } from "react-bootstrap"
 
 const LoginForm = () => {
   const [username, setUsername] = useState("")
@@ -19,33 +20,44 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <h2>log in to application</h2>
+    <Form onSubmit={handleLogin}>
+      <h2>Log in to Application</h2>
       <Notification />
-      <div>
-        username {}
-        <input
-          id="username"
-          type="text"
-          value={username}
-          name="Username"
-          onChange={({ target }) => setUsername(target.value)}
-        />
-      </div>
-      <div>
-        password {}
-        <input
-          id="password"
-          type="password"
-          value={password}
-          name="Password"
-          onChange={({ target }) => setPassword(target.value)}
-        />
-      </div>
-      <button id="login-button" type="submit">
-        login
-      </button>
-    </form>
+      <Table>
+        <tbody>
+          <tr>
+            <td>Username:</td>
+            <td>
+              <input
+                id="username"
+                type="text"
+                value={username}
+                name="Username"
+                onChange={({ target }) => setUsername(target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                name="Password"
+                onChange={({ target }) => setPassword(target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <Button id="login-button" type="submit">Login</Button>
+            </td>
+          </tr>
+        </tbody>
+      </Table>
+    </Form>
   )
 }
 
