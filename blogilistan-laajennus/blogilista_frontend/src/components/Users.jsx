@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import Header from "./Header"
+import NavMenu from "./NavMenu"
 
 const Users = () => {
   const users = useSelector(state => state.users)

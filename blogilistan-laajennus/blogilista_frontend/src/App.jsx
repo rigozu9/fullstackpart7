@@ -11,6 +11,7 @@ import BlogInfo from "./components/BlogInfo"
 import LoginForm from "./components/LoginForm"
 import Users from "./components/Users"
 import User from "./components/User"
+import NavMenu from "./components/NavMenu"
 
 import "./index.css"
 
@@ -38,7 +39,7 @@ const App = () => {
     : null
 
   return (
-    <>
+    <><NavMenu></NavMenu>
       <Routes>
         <Route path='/users/:id' element={<User user={user}/>}/>
         <Route path='/blogs/:id' element={<BlogInfo blog={blog}/>}/>
