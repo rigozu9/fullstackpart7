@@ -1,44 +1,48 @@
 import { useDispatch, useSelector } from "react-redux"
 import { logout } from "../reducers/loginReducer"
 import { Link } from "react-router-dom"
-import { Navbar, Nav } from "react-bootstrap"
+import { AppBar, Toolbar, Typography, Button, IconButton } from "@mui/material"
+import MenuIcon from "@mui/icons-material/Menu"
 
 const NavMenu = () => {
   const login = useSelector(state => state.login)
   const dispatch = useDispatch()
+
   const handleLogOut = () => dispatch(logout())
 
   if (!login) return null
 
   const padding = {
-    paddingRight: 5
+    marginRight: "10px",
+    color: "white",
+    textDecoration: "none"
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="#" as="span">
-            <Link style={padding} to="/">Home</Link>
-          </Nav.Link>
-          <Nav.Link href="#" as="span">
-            <Link style={padding} to="/users">Users</Link>
-          </Nav.Link>
-          <Nav.Link href="#" as="span">
-            {login
-              ? <span style={padding}><em>{login.name} logged in</em></span>
-              : <Link style={padding} to="/login">Login</Link>
-            }
-          </Nav.Link>
-          {login &&
-            <Nav.Link href="#" as="span">
-              <button onClick={handleLogOut} style={{ border: "none", background: "transparent", color: "white", cursor: "pointer" }}>logout</button>
-            </Nav.Link>
-          }
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton edge="start" color="inherit" aria-label="menu">
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Blog App
+        </Typography>
+        <Button color="inherit" component={Link} to="/" style={padding}>Home</Button>
+        <Button color="inherit" component={Link} to="/users" style={padding}>Users</Button>
+        {login ? (
+          <Typography variant="body1" style={padding}>
+            <em>{login.name} logged in</em>
+          </Typography>
+        ) : (
+          <Button color="inherit" component={Link} to="/login" style={padding}>Login</Button>
+        )}
+        {login && (
+          <Button color="inherit" onClick={handleLogOut} style={{ border: "none", background: "transparent", color: "white", cursor: "pointer" }}>
+            Logout
+          </Button>
+        )}
+      </Toolbar>
+    </AppBar>
   )
 }
 

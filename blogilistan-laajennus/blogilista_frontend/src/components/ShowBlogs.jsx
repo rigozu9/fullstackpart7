@@ -3,32 +3,42 @@ import Blog from "./Blog"
 import BlogForm from "./BlogForm"
 import Notification from "./Notification"
 import Header from "./Header"
-import { Table } from "react-bootstrap"
+import {
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Paper,
+} from "@mui/material"
 
 const ShowBlogs = () => {
   const blogs = useSelector(state => [...state.blogs])
   const login = useSelector(state => state.login)
 
   return (
-    <div>
+    <Container>
       <Notification />
       <Header />
       <BlogForm />
       <h2>Blogs</h2>
-      <Table striped>
-        <tbody>
-          {blogs
-            .sort((a, b) => b.likes - a.likes)
-            .map((blog) => (
-              <tr key={blog.id}>
-                <td>
-                  <Blog blog={blog} username={login.username} />
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </Table>
-    </div>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableBody>
+            {blogs
+              .sort((a, b) => b.likes - a.likes)
+              .map((blog) => (
+                <TableRow key={blog.id}>
+                  <TableCell>
+                    <Blog blog={blog} username={login.username} />
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Container>
   )
 }
 

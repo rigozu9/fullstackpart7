@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 import { createBlog } from "../reducers/blogReducer"
 import { useState, useRef } from "react"
 import Togglable from "./Togglable"
-import { Table, Form, Button } from "react-bootstrap"
+import { TextField, Button, Grid } from "@mui/material"
 
 const BlogForm = () => {
   const [title, setTitle] = useState("")
@@ -26,57 +26,45 @@ const BlogForm = () => {
   return (
     <Togglable buttonLabel="Create New Blog" cancelLabel="Hide" ref={blogFormRef}>
       <h2>Create New</h2>
-      <Form onSubmit={addBlog}>
-        <Table>
-          <tbody>
-            <tr>
-              <td>Title:</td>
-              <td>
-                <input
-                  id="title"
-                  type="text"
-                  placeholder="Title"
-                  value={title}
-                  name="title"
-                  onChange={({ target }) => setTitle(target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Author:</td>
-              <td>
-                <input
-                  id="author"
-                  type="text"
-                  placeholder="Author"
-                  value={author}
-                  name="author"
-                  onChange={({ target }) => setAuthor(target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>URL:</td>
-              <td>
-                <input
-                  id="url"
-                  type="text"
-                  placeholder="URL"
-                  value={url}
-                  name="url"
-                  onChange={({ target }) => setUrl(target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <Button id="create-button" type="submit">Create</Button>
-              </td>
-            </tr>
-          </tbody>
-        </Table>
-      </Form>
+      <form onSubmit={addBlog}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              id="title"
+              label="Title"
+              variant="outlined"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              id="author"
+              label="Author"
+              variant="outlined"
+              value={author}
+              onChange={(event) => setAuthor(event.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              id="url"
+              label="URL"
+              variant="outlined"
+              value={url}
+              onChange={(event) => setUrl(event.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button id="create-button" type="submit" variant="contained" color="primary">
+              Create
+            </Button>
+          </Grid>
+        </Grid>
+      </form>
     </Togglable>
   )
 }

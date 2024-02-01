@@ -14,6 +14,7 @@ import User from "./components/User"
 import NavMenu from "./components/NavMenu"
 
 import "./index.css"
+import { Container } from "@mui/material"
 
 const App = () => {
   const login = useSelector(state => state.login)
@@ -40,16 +41,18 @@ const App = () => {
     : null
 
   return (
-    <div className="container">
-      <><NavMenu></NavMenu>
-        <Routes>
-          <Route path='/users/:id' element={<User user={user}/>}/>
-          <Route path='/blogs/:id' element={<BlogInfo blog={blog}/>}/>
-          <Route path='/' element={!login ? <LoginForm /> : <ShowBlogs /> }/>
-          <Route path='/users' element={<Users />}/>
-        </Routes>
-      </>
-    </div>
+    <Container>
+      <div>
+        <><NavMenu></NavMenu>
+          <Routes>
+            <Route path='/users/:id' element={<User user={user}/>}/>
+            <Route path='/blogs/:id' element={<BlogInfo blog={blog}/>}/>
+            <Route path='/' element={!login ? <LoginForm /> : <ShowBlogs /> }/>
+            <Route path='/users' element={<Users />}/>
+          </Routes>
+        </>
+      </div>
+    </Container>
   )
 }
 

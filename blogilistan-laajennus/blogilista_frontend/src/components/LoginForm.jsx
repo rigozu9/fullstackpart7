@@ -2,7 +2,14 @@ import { useState } from "react"
 import { login } from "../reducers/loginReducer"
 import { useDispatch } from "react-redux"
 import Notification from "./Notification"
-import { Table, Form, Button } from "react-bootstrap"
+import { Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TextField,
+  Button }
+  from "@mui/material"
 
 const LoginForm = () => {
   const [username, setUsername] = useState("")
@@ -20,44 +27,48 @@ const LoginForm = () => {
   }
 
   return (
-    <Form onSubmit={handleLogin}>
+    <Container>
       <h2>Log in to Application</h2>
       <Notification />
-      <Table>
-        <tbody>
-          <tr>
-            <td>Username:</td>
-            <td>
-              <input
-                id="username"
-                type="text"
-                value={username}
-                name="Username"
-                onChange={({ target }) => setUsername(target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>Password:</td>
-            <td>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                name="Password"
-                onChange={({ target }) => setPassword(target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <Button id="login-button" type="submit">Login</Button>
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-    </Form>
+      <form onSubmit={handleLogin}>
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell>Username:</TableCell>
+              <TableCell>
+                <TextField
+                  id="username"
+                  type="text"
+                  value={username}
+                  label="Username"
+                  onChange={(event) => setUsername(event.target.value)}
+                />
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Password:</TableCell>
+              <TableCell>
+                <TextField
+                  id="password"
+                  type="password"
+                  value={password}
+                  label="Password"
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell>
+                <Button id="login-button" type="submit" variant="contained" color="primary">
+                  Login
+                </Button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </form>
+    </Container>
   )
 }
 

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { Alert } from "react-bootstrap"
+import { Alert } from "@mui/material"
 
 const Notification = () => {
   const { message, type } = useSelector(state => state.notification)

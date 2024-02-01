@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import Header from "./Header"
-import { Table } from "react-bootstrap"
+import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material"
 
 const User = ({ user }) => {
   if (!user) return null
@@ -14,19 +14,19 @@ const User = ({ user }) => {
       <h1>{user.name}</h1>
       <h2>Added Blogs</h2>
 
-      <Table striped>
-        <thead>
-          <tr>
-            <th>Title</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Title</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {blogs.map((blog) => (
-            <tr key={blog.id}>
-              <td>{blog.title}</td>
-            </tr>
+            <TableRow key={blog.id}>
+              <TableCell>{blog.title}</TableCell>
+            </TableRow>
           ))}
-        </tbody>
+        </TableBody>
       </Table>
     </div>
   )
